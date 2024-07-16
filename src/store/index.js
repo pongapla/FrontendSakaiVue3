@@ -1,27 +1,33 @@
+// store/index.js
 import { createStore } from 'vuex';
-export default createStore({
-    sate: {
+
+const store = createStore({
+    state: {
         isAuthenticated: false,
+        isGoogleSignIn: false,
     },
     mutations: {
-        setAutentication(sate,satus){
-            sate.isAuthenticated = satus;
-        }
-    },
-    actions: {
-        login({ commit }) {
-            return new Promise((resolve, reject) => {
-                setTimeout(()=>{
-                    commit('setAutentication', true);
-                    resolve();
-                }, 1000);
-            });
+        setAuthenticated(state, payload) {
+            state.isAuthenticated = payload;
         },
-        logout({ commit }) {
-            commit('setAutentication', false);
+        setGoogleSignIn(state, payload) {
+            state.isGoogleSignIn = payload;
         }
     },
     getters: {
-        isAuthenticated: state => state.isAuthenticated
+        isAuthenticated: state => state.isAuthenticated,
+        isGoogleSignIn: state => state.isGoogleSignIn,
+    },
+    actions: {
+        login({ commit }, isGoogle) {
+            commit('setAuthenticated', true);
+            commit('setGoogleSignIn', isGoogle);
+        },
+        logout({ commit }) {
+            commit('setAuthenticated', false);
+            commit('setGoogleSignIn', false);
+        }
     }
 });
+
+export default store;

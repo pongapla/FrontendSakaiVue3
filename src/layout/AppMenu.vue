@@ -1,7 +1,15 @@
 <script setup>
 import { ref } from 'vue';
-
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import AppMenuItem from './AppMenuItem.vue';
+const router = useRouter();
+const store = useStore();
+
+const handleLogout = () => {
+    store.dispatch('logout');
+    router.push({ name: 'login' });
+};
 
 const model = ref([
     {
@@ -55,9 +63,9 @@ const model = ref([
                 to: '/pages/empty'
             },
             {
-                label: 'Login',
+                label: 'LogOut',
                 icon: 'pi pi-fw pi-sign-in',
-                to: '/auth/login'
+                command: handleLogout
             },
         ]
     },

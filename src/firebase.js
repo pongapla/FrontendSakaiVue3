@@ -1,14 +1,15 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider, signInWithRedirect } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAjyhBGSkJ2-W0q0SJJstAH8sRdH-UXsWQ",
+  authDomain: "vue3login-28b62.firebaseapp.com",
+  projectId: "vue3login-28b62",
+  storageBucket: "vue3login-28b62.appspot.com",
+  messagingSenderId: "832099664623",
+  appId: "1:832099664623:web:9892f79499c54f9a53511a",
+  measurementId: "G-Y912WZNPYB"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -18,4 +19,4 @@ const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 const appleProvider = new OAuthProvider('apple.com');
 
-export { auth, googleProvider, facebookProvider, appleProvider };
+export { auth, googleProvider, facebookProvider, appleProvider, signInWithRedirect };
